@@ -1,0 +1,680 @@
+{
+  "source_run": "data/dynamic/pipeline_runs/20260208_110147_fixed-cs-AI-200_reason-on",
+  "sample_seed": 20260225,
+  "sample_size": 20,
+  "recommendation_top_k": 5,
+  "papers": [
+    {
+      "arxiv_id": "2507.14570",
+      "ground_truth_datasets": [
+        "OGB"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "Orkut",
+          "reason": "Orkut is a real-world social graph with ~3.0B edges and ~3M nodes — among the largest publicly available static graphs, directly aligned with LPS-GNN’s focus on 100-billion-edge scalability (even if still 2 orders of magnitude smaller, it's the closest benchmark for systems-level evaluation of neighbor explosion and memory pressure).",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "Friendster",
+          "reason": "Friendster has ~1.8B edges and ~65M nodes — one of only a handful of real-world graphs approaching billion-edge scale; historically used for large-graph algorithm/systems validation, making it highly relevant for evaluating LPS-GNN’s deployment claims.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "DBLP",
+          "reason": "DBLP (up to 42.4M vertices, 400M triples) is a knowledge graph at the upper bound of commonly used large-scale GNN benchmarks; while 3 orders of magnitude below 100B edges, it serves as a meaningful intermediate-scale testbed for partitioning and low-memory message passing.",
+          "final_score": 0.5
+        },
+        {
+          "dataset": "YAGO",
+          "reason": "YAGO matches DBLP in scale (~42.4M vertices, 400M triples); as a dense knowledge graph, it stresses relational aggregation and schema-aware sampling — relevant for evaluating LPS-GNN’s flexibility on heterogeneous, high-degree graphs.",
+          "final_score": 0.5
+        },
+        {
+          "dataset": "Yelp",
+          "reason": "Yelp is explicitly cited for METIS-based partitioning evaluation in scalable GNN literature; though likely sub-billion in edge count, its real-world heterogeneity (user-business-review interactions) tests LPS-GNN’s adaptability to irregular topologies.",
+          "final_score": 0.45
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2507.15889",
+      "ground_truth_datasets": [
+        "APPS",
+        "MBPP"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "MBPP",
+          "reason": "Explicitly named in the abstract as a core programming competition dataset used for training/evaluating program synthesis models; directly anchors the paper’s critique of current benchmarks and motivates its bootstrapping-for-repair approach.",
+          "final_score": 1.0
+        },
+        {
+          "dataset": "APPS",
+          "reason": "Explicitly cited alongside MBPP in the abstract as a limiting benchmark; widely used in self-repair and iterative synthesis studies, making it foundational to the paper’s repair-centric bootstrapping methodology.",
+          "final_score": 1.0
+        },
+        {
+          "dataset": "Defects4J",
+          "reason": "Standard real-world APR benchmark with compiler-validated bug fixes; directly supports the paper’s emphasis on human-like, iterative, compiler-assisted repair — a core conceptual pillar.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "SWE-bench-lite",
+          "reason": "Evaluates functional correctness of autonomous fixes on real-world codebases; aligns tightly with the paper’s goal of grounding bootstrapped repair in realistic, test-driven, self-contained software contexts.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "MBPP-ET",
+          "reason": "Enriched extension of MBPP (a named anchor dataset); adds test cases and descriptions to improve robustness evaluation of bootstrapped repair behavior — high relevance by derivation and purpose.",
+          "final_score": 0.96
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2510.03483",
+      "ground_truth_datasets": [
+        "HECKTOR"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "BraTS 2020",
+          "reason": "Directly supports both core contributions of DuPLUS: universal medical image segmentation (multi-parametric MRI with expert segmentation masks) and prognosis (explicit survival time prediction task), enabling end-to-end evaluation of the dual-prompt mechanism on clinically meaningful outcomes.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "HECKTOR",
+          "reason": "Explicitly designed for survival prediction using CT/PET + EHRs, making it uniquely suited to validate DuPLUS’s prognostic capability in a multimodal, text-conditioned oncology imaging framework—precisely matching the paper’s dual-segmentation-and-prognosis objective.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "PMC-OA",
+          "reason": "Massive scale (1.65M medical image-caption pairs) provides ideal pre-training signal for DuPLUS’s dual-prompt vision-language architecture, directly addressing the paper’s emphasis on scaling medical semantic understanding across domains for universal generalization.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "MIMIC-CXR",
+          "reason": "Large-scale chest X-ray + radiology report pairs enable robust vision-language alignment and text-controlled semantic conditioning—critical for both segmentation guidance and report-informed prognosis, aligning with DuPLUS’s hierarchical prompt design.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "TCGA",
+          "reason": "Multimodal (imaging-adjacent pathology reports, genomics, survival outcomes) and pan-cancer scope makes it ideal for training/evaluating DuPLUS’s hierarchical dual-prompt architecture on semantic-guided segmentation and cancer prognosis.",
+          "final_score": 0.95
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2509.10641",
+      "ground_truth_datasets": [
+        "GQA",
+        "VQA-RAD",
+        "Visual Question Answering"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "MMBench",
+          "reason": "MMBench is a comprehensive, high-quality multimodal benchmark explicitly designed for evaluating advanced cognitive capabilities in MLLMs—including reasoning, grounding, and generalization—making it the gold-standard evaluation suite for test-time warmup methods targeting holistic multimodal reasoning improvements.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "Bongard-OpenWorld",
+          "reason": "Directly targets abstract visual reasoning on real-world images—a core challenge where MLLMs underperform and where test-time warmup could induce rapid, instance-adaptive conceptual refinement; its open-world design aligns with the paper’s emphasis on generalizable reasoning beyond narrow supervision.",
+          "final_score": 0.94
+        },
+        {
+          "dataset": "MM-Vet",
+          "reason": "Evaluates six fine-grained vision-language reasoning capabilities using LLM-based automated evaluation—ideal for quantifying nuanced gains from test-time warmup without human annotation bias, and directly supports the paper’s goal of boosting reasoning at inference time.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "Bongard-HOI",
+          "reason": "Extends Bongard-style abstraction to human-object interaction in real-world scenes—highly challenging, compositional, and grounded, matching the paper’s focus on enhancing complex, contextual multimodal reasoning during test-time adaptation.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "MATH-V",
+          "reason": "Public multimodal math reasoning benchmark explicitly cited for MLLM evaluation; its formal problem structure and visual-text integration make it ideal for measuring whether test-time warmup improves logical consistency and stepwise reasoning under visual constraints.",
+          "final_score": 0.92
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2510.21908",
+      "ground_truth_datasets": [
+        "CIFAR-FS",
+        "Omniglot"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "CIFAR-FS",
+          "reason": "Explicitly named in the paper's abstract as a core few-shot classification benchmark used to evaluate both Hebbian and gradient-based plasticity—direct experimental validation with evidence-backed record ID and maximal relevance to in-sequence adaptation.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "Omniglot",
+          "reason": "Explicitly named alongside CIFAR-FS in the abstract as a primary few-shot classification task for evaluating plasticity mechanisms; foundational in meta-learning literature and strongly aligned with rapid task adaptation goals.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "mini-Imagenet",
+          "reason": "Standard few-shot vision benchmark closely related to CIFAR-FS and Omniglot; evidence-backed with citation to same paper, supporting its use in plasticity evaluation for rapid adaptation across visual categories.",
+          "final_score": 0.92
+        },
+        {
+          "dataset": "Meta-Dataset",
+          "reason": "Large-scale, multi-domain few-shot benchmark explicitly designed for generalization across tasks—highly relevant to the paper’s emphasis on robust, cross-task in-context adaptation, despite lack of direct citation (no_evidence but strong conceptual fit).",
+          "final_score": 0.91
+        },
+        {
+          "dataset": "FC100",
+          "reason": "CIFAR-100–derived few-shot benchmark; structurally identical to CIFAR-FS in evaluation protocol and domain—strong proxy for few-shot visual adaptation, with high alignment to paper’s experimental paradigm.",
+          "final_score": 0.87
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2507.04103",
+      "ground_truth_datasets": [
+        "MiniWob++"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "WebLINX",
+          "reason": "Directly addresses the paper's core critique of single-step task bias with multi-turn, real-world web interactions and dynamic adaptability—ideal for statistically grounded compute allocation analysis in long-horizon LLM web agent training.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "Mind2Web",
+          "reason": "Explicitly designed for complex, cross-domain web tasks with action sequences and real DOM/page context—perfectly aligned with the paper’s focus on multi-step web interaction and open-source LLM web agent evaluation.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "AitW",
+          "reason": "Large-scale GUI agent benchmark with human-annotated action sequences and screenshots; supports visual grounding, multi-step planning, and SFT/RL training—highly relevant for statistical diagnosis of training dynamics and hyperparameter sensitivity.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "MiniWob++",
+          "reason": "Simulated web environment requiring low-level keyboard/mouse actions; enables controlled, compute-efficient RL/SFT experimentation and hyperparameter analysis—directly supports the paper’s goal of diagnosing compute allocation in web-agent training.",
+          "final_score": 0.92
+        },
+        {
+          "dataset": "AgentBench",
+          "reason": "Multi-environment, multi-turn benchmark including dedicated web browsing tasks; explicitly built for evaluating open-ended, interactive LLM agents—strong match for statistical diagnosis of training behavior across realistic web workflows.",
+          "final_score": 0.9
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2512.24410",
+      "ground_truth_datasets": [
+        "XL-Sum"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "CrossSum-IN",
+          "reason": "Explicitly designed for cross-lingual summarization in Indic languages (e.g., Hindi, Tamil, Marathi), which are canonical less-resourced languages; directly supports experimental evaluation of zero-shot, fine-tuning, and data augmentation approaches in low-resource settings.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "XL-Sum",
+          "reason": "Contains professionally annotated article-summary pairs across 45 languages—including Swahili, Bengali, Urdu, and other less-resourced languages—making it the broadest and most authoritative multilingual summarization benchmark aligned with the paper’s core focus.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "WikiLingua",
+          "reason": "Covers 18 languages including Swahili, Indonesian, Hindi, and Vietnamese; explicitly built for cross-lingual abstractive summarization and widely used for low-resource transfer experiments—strong match for multilingual fine-tuning and LLM translation pipeline evaluation.",
+          "final_score": 0.92
+        },
+        {
+          "dataset": "MLSUM",
+          "reason": "Multilingual news summarization dataset covering French, German, Spanish, Russian, and Turkish—spanning varying resource levels (e.g., Turkish and Russian are medium-to-lower resourced); directly supports comparative analysis of fine-tuned mT5 and transfer approaches.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "HeSum",
+          "reason": "Hebrew abstractive summarization dataset (10k samples); while Hebrew is mid-to-high resourced, it is *less*-resourced than English in NLP tooling and pretraining coverage, and is occasionally treated as a target for low-resource adaptation—marginally relevant but included due to scarcity of alternatives in this tier.",
+          "final_score": 0.4
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2508.19667",
+      "ground_truth_datasets": [
+        "HumanEval"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "MedQA",
+          "reason": "Directly evaluates medical reasoning using USMLE-style questions—core to the paper's healthcare domain focus and explicit contrast between specialized vs. general-purpose LLMs.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "SLAKE",
+          "reason": "Clinical VQA dataset used to benchmark multimodal specialized models (e.g., LLaVA-Med), aligning precisely with the paper’s emphasis on healthcare + multimodal specialization beyond fine-tuning.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "SEED-Bench",
+          "reason": "Comprehensive multimodal benchmark spanning 12 dimensions and image/video modalities—strong match for the paper’s cross-domain multimodal specialization theme in healthcare, technical, and professional contexts.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "FinanceBench",
+          "reason": "Explicitly designed for financial reasoning and QA; evidence-backed with RAG support and record_id; directly supports the paper’s finance domain analysis and evaluation of real-world professional limitations.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "CaseHOLD",
+          "reason": "Legal-domain multiple-choice dataset for identifying case holdings—perfectly matches the paper’s legal domain focus and need for domain-specialized evaluation, despite lacking evidence ID (reason is domain-specific and task-aligned).",
+          "final_score": 0.95
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2507.14928",
+      "ground_truth_datasets": [
+        "MMLU-Pro"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "AgentBench",
+          "reason": "Explicitly designed for evaluating LLM agents in multi-turn, open-ended, interactive settings across eight diverse environments (e.g., OS, DB, puzzles), enabling controlled study of decentralized coordination, failure modes, and adversarial behavior—directly aligned with Byzantine-robust decentralized coordination of LLM agents.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "SMAC",
+          "reason": "MARL benchmark with explicit multi-agent interaction, sparse rewards, and environment-level coordination; supports simulation of Byzantine agents and decentralized control—highly suitable for robust coordination research under adversarial conditions.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "TruthfulQA",
+          "reason": "Directly evaluates truthfulness and resistance to hallucination—core vulnerabilities exploited by Byzantine agents in consensus settings—making it essential for assessing collective accuracy degradation under malicious influence.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "Google Research Football",
+          "reason": "Dynamic MARL environment supporting cooperative/competitive multi-agent interaction; structured observation-action space enables modeling of Byzantine agents and leader failure—strong relevance for decentralized coordination robustness evaluation.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "HaluEval",
+          "reason": "Specifically targets hallucination detection—a primary attack vector for Byzantine agents—enabling evaluation of whether decentralized coordination mitigates or amplifies hallucinatory consensus.",
+          "final_score": 0.8
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2512.20074",
+      "ground_truth_datasets": [
+        "BioASQ",
+        "PubMedQA"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "MARC",
+          "reason": "Explicitly designed to probe medical LLM reasoning failure modes (e.g., Einstellung effect) with adversarial clinical scenarios—directly stress-tests Reason2Decide’s robustness, rationale fidelity, and exposure bias mitigation in clinical decision contexts.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "Evidence Inference",
+          "reason": "Part of ERASER benchmark; provides human-annotated rationales for medical interventions—ideal for rationale extraction and classification, directly supporting Reason2Decide’s dual-task rationale+prediction alignment objective.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "MedNLI",
+          "reason": "Provides physician-annotated clinical sentence entailment labels *with rationales* from MIMIC-III—enables rationale-driven classification, matching Stage-2 joint learning goals; clinical domain and annotation quality are highly aligned.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "KaMed",
+          "reason": "63k+ real-world medical dialogues across departments—supports rationale generation in conversational clinical decision-making, offering a complementary modality (dialogue) to structured EHRs and enhancing ecological validity.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "PubMedQA",
+          "reason": "Biomedical QA requiring yes/no/maybe answers grounded in PubMed abstracts; includes human-annotated rationales in some versions—strong clinical grounding and rationale-label pairing for self-rationalization training.",
+          "final_score": 0.8
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2508.10491",
+      "ground_truth_datasets": [
+        "CIFAR-10",
+        "Fashion-MNIST",
+        "GTSRB"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "CIFAR-10",
+          "reason": "Explicitly named in the paper's abstract as one of the four datasets used to evaluate contrastive ECOC for adversarial defense — direct empirical relevance and evidence-backed.",
+          "final_score": 1.0
+        },
+        {
+          "dataset": "RobustBench",
+          "reason": "Standardized adversarial robustness benchmark integrating CIFAR-10/100 and ImageNet subsets; cited in related work as a gold-standard platform for evaluating the robustness claims central to the paper.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "CIFAR-100",
+          "reason": "Highly plausible among the 'four datasets' due to its canonical role alongside CIFAR-10 in ECOC and adversarial robustness literature; fine-grained classes stress codebook design, aligning with paper’s focus.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "ImageNet",
+          "reason": "Canonical large-scale multiclass benchmark; paper’s emphasis on scalability, generalization, and adversarial robustness strongly implies use of ImageNet or a subset (e.g., ImageNet-100).",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "MNIST",
+          "reason": "Foundational digit classification dataset widely used in ECOC and adversarial defense research; simplicity enables ablation and codebook analysis — highly plausible as one of the four evaluation datasets.",
+          "final_score": 0.85
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2510.00706",
+      "ground_truth_datasets": [
+        "D3"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "Reddit",
+          "reason": "Directly named in the paper as a core platform (alongside Facebook and X); contains long-form, clinically annotated mental health posts from subreddits (e.g., r/depression), enabling hierarchical n-gram encoding and domain-aware attention with clinical grounding—perfect match for AttentionDep’s architecture and explainability goals.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "Dreaddit",
+          "reason": "Explicitly depression- and anxiety-focused forum dataset with expert severity annotations; supports ordinal depression assessment and explainable modeling via naturalistic text—strong alignment with AttentionDep’s domain-aware, explainable severity estimation objective.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "ConceptNet",
+          "reason": "Not a training dataset but a structured commonsense knowledge graph; highly relevant as a candidate external domain knowledge source for AttentionDep’s cross-attention mechanism to inject mental health concepts (e.g., 'hopelessness', 'anhedonia')—directly supports the 'domain-aware' and 'explainable' design claims.",
+          "final_score": 0.85
+        },
+        {
+          "dataset": "GoEmotions",
+          "reason": "Large-scale, Reddit-native dataset with fine-grained emotion labels including depression-relevant states (e.g., 'sadness', 'grief'); supports attention-based interpretability and contextual modeling—though lacks explicit clinical severity scores, its scale and platform origin make it valuable for pretraining or auxiliary supervision.",
+          "final_score": 0.7
+        },
+        {
+          "dataset": "EmpatheticDialogues",
+          "reason": "Contains empathetic, mental-health-adjacent dialogues with emotion and situation labels; useful for modeling affective context and interpersonal expression patterns relevant to depression discourse—moderately supportive for attention calibration and explanation generation despite lacking severity labels.",
+          "final_score": 0.5
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2511.13273",
+      "ground_truth_datasets": [
+        "Spatial LibriSpeech"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "STARSS23",
+          "reason": "Contains real multichannel audio recordings with time-aligned DOA and distance estimates for up to 3 overlapping sources; explicitly supports 3D sound event localization and tracking — directly enables modeling and evaluation of auditory motion trajectories, making it the strongest empirical match for AMPBench's goal of probing motion perception deficits in LALMs.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "LuViRA",
+          "reason": "Provides real-world multichannel binaural recordings synchronized with motion-capture ground truth for speaker positions over time; enables inference of velocity, direction, and trajectory — highly aligned with 'spatial blind spot' evaluation, especially for dynamic source localization and motion reasoning.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "TAU-NIGENS Spatial Sound Events 2021",
+          "reason": "Designed for SELD with frame-level DOA annotations across multiple classes and spatial configurations; supports static localization robustly and offers temporal sequences suitable for motion trajectory analysis if velocity/direction is inferred — strong relevance, though lacks explicit motion labels (e.g., speed or acceleration).",
+          "final_score": 0.82
+        },
+        {
+          "dataset": "STARSS22",
+          "reason": "Predecessor to STARSS23 with multichannel audio and DOA estimation, but missing distance estimation and explicit multi-source motion support; still valuable for baseline motion-aware SELD evaluation, though less comprehensive than STARSS23.",
+          "final_score": 0.78
+        },
+        {
+          "dataset": "FAIR-Play",
+          "reason": "Contains videos with 3D audio metadata and spatial sound generation targets; small-scale but purpose-built for spatial audio tasks including binaural rendering and positional reasoning — uniquely bridges generative and perceptual spatial audio evaluation, relevant for probing LALM motion understanding.",
+          "final_score": 0.75
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2510.11827",
+      "ground_truth_datasets": [
+        "Reddit"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "Reddit",
+          "reason": "Large-scale, real-world graph explicitly used for node-level anomaly detection (NAD) benchmarks; directly cited in NAD literature and ideal for evaluating Janus’s joint Euclidean/hyperbolic GNNs due to its heterophilic structure, rich features, and ground-truth node anomalies.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "Yelp",
+          "reason": "Standard NAD benchmark with verified node-level anomaly labels, heterogeneous features, and structural complexity; used in UniGAD — a unified NAD framework — confirming strong compatibility with multi-space GNN architectures like Janus.",
+          "final_score": 0.94
+        },
+        {
+          "dataset": "Enron Emails",
+          "reason": "Organic, real-world social graph with ground-truth node anomalies and sparse, heterophilic topology; widely adopted in unsupervised NAD research, making it highly suitable for validating Janus’s contrastive dual-space alignment.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "Amazon Product Data",
+          "reason": "Co-purchase graph explicitly used for node-level graph anomaly detection; cited in work combining hyperbolic neural networks with NAD — direct methodological alignment with Janus’s hybrid geometric representation goal.",
+          "final_score": 0.92
+        },
+        {
+          "dataset": "Wiki Squirrel",
+          "reason": "Social network graph with known node-level anomaly labels and used in recent hyperbolic NAD studies; high topical relevance for evaluating hyperbolic + Euclidean joint modeling on small-world, hierarchical graphs.",
+          "final_score": 0.91
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2507.16861",
+      "ground_truth_datasets": [
+        "nuScenes"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "nuScenes",
+          "reason": "Directly supports 2D-guided cross-modal alignment: large-scale real-world LiDAR-camera synchronization, BEV annotations, precise extrinsic calibration metadata, and widespread use in evaluating projection-aware fusion for 3D detection—fully aligned with paper's core problem of misalignment due to calibration errors.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "Waymo Open Dataset",
+          "reason": "High-fidelity, massive-scale real-world LiDAR-camera sequences with rigorous calibration, diverse urban scenarios, and rolling shutter modeling—ideal for robustness evaluation under realistic projection errors and extrinsic inaccuracies central to the paper’s motivation.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "Argoverse 2",
+          "reason": "1,000+ synchronized LiDAR-camera sequences with rich 3D bounding boxes, full calibration parameters, and scene diversity—excellent for validating 2D-guided alignment strategies and quantifying sensitivity to projection errors in BEV fusion.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "KITTI",
+          "reason": "Foundational real-world dataset with LiDAR-camera pairs, 3D object annotations, and published extrinsics—enables controlled study of projection misalignment and 2D-guided supervision despite smaller scale and older sensor setup.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "nuScenes-C",
+          "reason": "Corruption-augmented extension of nuScenes featuring eight realistic perturbations—including extrinsic calibration shifts—making it uniquely suited for benchmarking robustness of 2D-guided alignment under precisely the projection errors highlighted in the paper.",
+          "final_score": 0.94
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2506.17629",
+      "ground_truth_datasets": [
+        "EgoSchema",
+        "OpenEQA"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "ALFRED",
+          "reason": "ALFRED is the canonical benchmark for embodied visual reasoning with natural language instructions in egocentric simulated environments, directly matching CLiViS's core problem: mapping free-form linguistic instructions to spatiotemporal action sequences grounded in dynamic egocentric video.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "EmbSpatial-Bench",
+          "reason": "Explicitly designed to evaluate embodied spatial understanding in LVLMs using egocentric scenes and six spatial relationships—precisely targets CLiViS’s cognitive map objective and linguistic-visual synergy in spatial reasoning.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "VLN-CE",
+          "reason": "Features instruction-guided navigation in continuous, realistic 3D environments with unconstrained agent movement—strongly aligns with CLiViS’s emphasis on free-form instructions and long-horizon egocentric video reasoning.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "OpenEQA",
+          "reason": "Benchmarks open-vocabulary spatial understanding and episodic memory via human-generated questions in real 3D environments—directly supports CLiViS’s cognitive map and embodied reasoning evaluation goals.",
+          "final_score": 0.96
+        },
+        {
+          "dataset": "R2R",
+          "reason": "Foundational VLN benchmark with human-annotated, egocentric navigation instructions in simulated houses—ideal for evaluating instruction following, semantic grounding, and spatiotemporal reasoning in dynamic indoor settings.",
+          "final_score": 0.95
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2509.10537",
+      "ground_truth_datasets": [
+        "CIFAR-10",
+        "CIFAR-100",
+        "Caltech-101"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "FEMNIST",
+          "reason": "Explicitly designed for non-i.i.d. FL with realistic client heterogeneity and data partitioning; directly enables evaluation of how large global batches interact with statistical diversity — central to the paper’s core trade-off analysis between parallelism and statistical performance.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "CIFAR-10",
+          "reason": "Standard, widely adopted image classification benchmark in FL literature; frequently used to study convergence, generalization, and communication-efficiency under large-batch training — perfectly aligned with the paper’s focus on large-batch FL trade-offs.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "MNIST-8M",
+          "reason": "Specifically engineered for large-scale FL experiments; its extended size supports rigorous large-batch ablation studies, making it highly targeted to the paper’s titular emphasis on 'large-batches'.",
+          "final_score": 0.93
+        },
+        {
+          "dataset": "CIFAR-100",
+          "reason": "Higher-class diversity and complexity than CIFAR-10; commonly used in FL to assess statistical efficiency and generalization under larger batch sizes and non-i.i.d. settings — strongly reinforces the paper’s empirical scope.",
+          "final_score": 0.92
+        },
+        {
+          "dataset": "Tiny ImageNet",
+          "reason": "Bridges scale and realism between CIFAR and ImageNet; suitable for evaluating large-batch FL behavior in more challenging vision tasks without full ImageNet resource overhead — excellent balance of relevance and practicality.",
+          "final_score": 0.9
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2510.14184",
+      "ground_truth_datasets": [
+        "BANKING77"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "FIND",
+          "reason": "Directly matches MAFA's enterprise-scale, financial-domain deployment: 2.9M real-world customer utterances from a financial VPA, explicitly designed for intent-slot annotation—precisely the backlog elimination use case described in the paper. Evidence-backed with record_id and highest reason score.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "BANKING77",
+          "reason": "Fine-grained banking-domain intent classification (77 intents) aligns perfectly with MAFA’s target domain (financial services), task type (configurable intent annotation), and production needs. Though no-evidence, its description strongly supports relevance to MAFA’s configurable, domain-specific adaptation.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "SNIPS",
+          "reason": "Standard benchmark for intent classification and slot filling on voice assistant queries—directly reflects MAFA’s core annotation functionality (configurable, structured, utterance-level). Domain proximity (user utterances) and task fidelity make it highly relevant despite being generic.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "CLINC150",
+          "reason": "150-intent classification with out-of-scope detection mirrors MAFA’s production requirements: handling emerging utterance types dynamically. Its scale and OOS robustness evaluation align with MAFA’s consensus-driven, adaptable framework.",
+          "final_score": 0.9
+        },
+        {
+          "dataset": "FrameNet",
+          "reason": "Semantic frame annotation (e.g., 'Transfer-Money' with roles) exemplifies the rich, structured, domain-configurable labeling MAFA enables—beyond flat intents, supporting predicate-argument structure critical in financial dialogue understanding.",
+          "final_score": 0.9
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2508.06214",
+      "ground_truth_datasets": [
+        "MuJoCo",
+        "Omniverse Isaac Gym"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "BRAX",
+          "reason": "BRAX is a differentiable physics simulator explicitly designed for backpropagation through time (BPTT), directly enabling reparameterization policy gradients (RPG) — the paper’s core technical mechanism. Its tight alignment with computing PPO-style surrogate objectives via differentiable dynamics makes it the most relevant dataset for implementation and evaluation.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "DeepMind Control Suite",
+          "reason": "DMCS provides standardized, smooth, continuous-control environments with analytic dynamics and MuJoCo backends — ideal for isolating and validating RPG–PPO surrogate stability. Its design supports both theoretical analysis and empirical benchmarking of gradient variance reduction in differentiable settings.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "MuJoCo",
+          "reason": "MuJoCo is the canonical physics-based continuous-control benchmark used extensively in PPO, RPG, and differentiable RL literature. Its high-fidelity, differentiable (via finite-difference or custom adjoints) dynamics align precisely with the paper’s focus on sample-efficient, stable policy optimization via reparameterized surrogates.",
+          "final_score": 0.95
+        },
+        {
+          "dataset": "NeoRL",
+          "reason": "NeoRL provides conservative offline MuJoCo datasets, enabling rigorous evaluation of the paper’s claim about stable sample reuse under distributional shift — a direct testbed for the proposed reparameterized PPO surrogate objective in data-constrained regimes.",
+          "final_score": 0.94
+        },
+        {
+          "dataset": "RL Unplugged",
+          "reason": "RL Unplugged offers large-scale, high-quality offline MuJoCo datasets, supporting empirical validation of surrogate objective robustness and reuse efficiency — central to the paper’s stability argument bridging RPG and PPO.",
+          "final_score": 0.93
+        }
+      ]
+    },
+    {
+      "arxiv_id": "2506.05167",
+      "ground_truth_datasets": [
+        "Natural Questions",
+        "TQA"
+      ],
+      "recommended_datasets": [
+        {
+          "dataset": "QASPER",
+          "reason": "Explicitly designed for QA over long scientific documents with fine-grained evidence span annotation—directly targets ECoRAG’s core innovation: evidentiality-guided compression and sufficiency verification in long-context RAG.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "AVeriTeC",
+          "reason": "Provides claims with annotated supporting evidence and veracity labels—ideal for evaluating whether ECoRAG preserves *claim-supporting evidence* during compression, aligning precisely with its evidential sufficiency checking mechanism.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "Loong",
+          "reason": "Purpose-built for extended multi-document QA under strict long-context constraints—matches ECoRAG’s problem scope, evaluation design, and need for cross-document evidential compression without loss of support.",
+          "final_score": 0.98
+        },
+        {
+          "dataset": "HotpotQA",
+          "reason": "Requires explicit multi-hop evidence identification and reasoning; widely used to test whether compressed contexts retain sufficient supporting evidence—directly validates ECoRAG’s iterative retrieval and evidence-preserving compression.",
+          "final_score": 0.97
+        },
+        {
+          "dataset": "2WikiMultiHopQA",
+          "reason": "Demands chaining of distributed evidence across multiple hops—rigorously tests whether ECoRAG preserves *all necessary evidential links*, not just surface facts, making it highly aligned with the framework’s evidential fidelity goal.",
+          "final_score": 0.97
+        }
+      ]
+    }
+  ]
+}
